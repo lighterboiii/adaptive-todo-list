@@ -3,7 +3,6 @@ import React, { FC, useState } from "react";
 import style from './AddTask.module.css';
 import { useDispatch } from "react-redux";
 import { addTask } from "../../services/todoSlice";
-import { v4 as uuid } from 'uuid';
 
 const AddTask: FC = () => {
   const [inputValue, setInputValue] = useState('');

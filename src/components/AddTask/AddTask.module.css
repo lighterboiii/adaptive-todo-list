@@ -40,6 +40,7 @@
   background: transparent;
   border: .5px black solid;
   padding: 12px 24px;
+  min-width: 156px;
 }
 
 @media screen and (max-width: 768px) {
