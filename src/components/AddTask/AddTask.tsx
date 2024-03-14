@@ -59,7 +59,7 @@ const AddTask: FC = () => {
         </textarea>
       </fieldset>
       <button
-        disabled={!inputValue && !description}
+        disabled={!inputValue}
         className={style.form__button}
       >
         Добавить задачу
