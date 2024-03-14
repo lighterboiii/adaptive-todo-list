@@ -1,24 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useAppSelector } from '../../services/typedHooks';
+import AddTask from '../AddTask/AddTask';
+import TaskList from '../TaskList/TaskList';
+import style from './App.module.css';
 
 function App() {
+  const tasks = useAppSelector(store => store.todos);
+  console.log(tasks);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={style.app}>
+      <h1 className={style.app__title}>Добавьте задачу</h1>
+      <AddTask />
+      <TaskList />
     </div>
   );
 }
