@@ -1,7 +1,6 @@
 import { FC } from "react";
 import style from './TaskList.module.css';
 import { ITask } from "../../utils/types";
-import { toggleTaskCompletion } from "../../services/todoSlice";
 import Task from "../Task/Task";
 
 interface ITaskList {

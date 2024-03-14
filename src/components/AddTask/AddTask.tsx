@@ -28,7 +28,7 @@ const AddTask: FC = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const task = {
-      id: Number(uuid()),
+      id: new Date().getTime(),
       name: inputValue,
       description: description,
       completed: false,
@@ -52,13 +52,16 @@ const AddTask: FC = () => {
         <textarea 
         name="description" 
         id="description" 
+        className={style.form__textarea}
         value={description} 
         onChange={(e) => handleChange(e, 'description')} 
         placeholder="Описание задачи"
         >
         </textarea>
       </fieldset>
-      <button className={style.form__button}>Добавить задачу</button>
+      <button className={style.form__button}>
+        Добавить задачу
+        </button>
     </form>
   )
 };

@@ -14,8 +14,7 @@ const todoSlice = createSlice({
     },
     deleteTask: (state, action: PayloadAction<number>) => {
       const taskId = action.payload;
-      const taskToDelete = state.findIndex(task => task.id === taskId);
-      taskToDelete !== 1 && state.splice(taskToDelete, 1); 
+      return state.filter(task => task.id !== taskId);
     },
     toggleTaskCompletion: (state, action: PayloadAction<number>) => {
       const taskId = action.payload;

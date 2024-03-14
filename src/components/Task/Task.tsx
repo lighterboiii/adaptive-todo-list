@@ -1,23 +1,44 @@
 import { FC } from "react";
 import style from './Task.module.css';
-import { toggleTaskCompletion } from "../../services/todoSlice";
+import { deleteTask, toggleTaskCompletion } from "../../services/todoSlice";
 import { ITask } from "../../utils/types";
+import { useAppDispatch } from "../../services/typedHooks";
 
 interface ITaskProps {
   task: ITask;
 }
 
 const Task: FC<ITaskProps> = ({ task }) => {
+  const dispatch = useAppDispatch();
+
+  const handleDeleteTask = (id: number) => {
+    dispatch(deleteTask(id))
+  };
+
+  const handleTaskCompketion = (id: number) => {
+    dispatch(toggleTaskCompletion(id));
+  }
+
   return (
-    <li key={task.id} className={style.list__element}>
-      <input
-        type="checkbox"
-        checked={task.completed}
-        onChange={() => { toggleTaskCompletion(task.id) }}
-        className={style.list__checkbox}
-      />
-      <p className={style.list__name}>{task.name}</p>
-      <p className={style.list__description}>{task.description}</p>
+    <li key={task.id} className={style.task}>
+      <label htmlFor={`checkbox-${task.id}`} className={style.task__label}>
+        Отметить как выполненное
+        <input
+          type="checkbox"
+          id={`checkbox-${task.id}`}
+          checked={task.completed}
+          onChange={() => handleTaskCompketion(task.id)}
+          className={style.task__checkbox}
+        />
+      </label>
+      <h3 className={style.task__name}>{task.name}</h3>
+      <p className={style.task__description}>{task.description}</p>
+      <button
+        className={style.task__deleteButton}
+        onClick={() => handleDeleteTask(task.id)}
+      >
+        &times;
+      </button>
     </li>
   )
 };
