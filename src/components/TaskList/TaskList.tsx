@@ -14,9 +14,9 @@ const TaskList: FC<ITaskList> = ({ tasks }) => {
 
   return (
     <div className={style.tasks}>
-      <button className={style.tasks__button} onClick={() => setFiltered(!isFiltered)}>
+      {tasks.length > 1 && <button className={style.tasks__button} onClick={() => setFiltered(!isFiltered)}>
         Показать выполненные
-      </button>
+      </button>}
       <ul className={style.list}>
         {filteredTasks.map(task => (
           <Task task={task} />
