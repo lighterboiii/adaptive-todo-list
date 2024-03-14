@@ -1,0 +1,22 @@
+.list {
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(200px, 1fr));
+  list-style: none;
+  width: 100%;
+  gap: 10px;
+}
+
+.list__element {
+  margin: 0;
+  padding: 12px;
+  border: 1px black solid;
+  border-radius: 12px;
+  height: 380px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+}

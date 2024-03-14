@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { FC, useState } from "react";
 import style from './AddTask.module.css';
+import { useDispatch } from "react-redux";
+import { addTask } from "../../services/todoSlice";
+import { v4 as uuid } from 'uuid';
 
 const AddTask: FC = () => {
   const [inputValue, setInputValue] = useState('');
   const [description, setDescription] = useState('');
+
+  const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, inputName: string) => {
     const value = e.target.value;
@@ -20,8 +25,21 @@ const AddTask: FC = () => {
     }
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const task = {
+      id: Number(uuid()),
+      name: inputValue,
+      description: description,
+      completed: false,
+    };
+    dispatch(addTask(task));
+    setInputValue('');
+    setDescription('');
+  } 
+
   return (
-    <form className={style.form} onSubmit={() => { }}>
+    <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
       <fieldset className={style.form__set}>
         <input 
         type="text" 
@@ -35,7 +53,7 @@ const AddTask: FC = () => {
         name="description" 
         id="description" 
         value={description} 
-        onChange={(e) => handleChange(e, 'desciption')} 
+        onChange={(e) => handleChange(e, 'description')} 
         placeholder="Описание задачи"
         >
         </textarea>

@@ -10,7 +10,7 @@ function App() {
     <div className={style.app}>
       <h1 className={style.app__title}>Добавьте задачу</h1>
       <AddTask />
-      <TaskList />
+      <TaskList tasks={tasks} />
     </div>
   );
 }

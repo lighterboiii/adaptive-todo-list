@@ -1,11 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface ITask {
-  id: number;
-  name: string;
-  description: string;
-  completed: boolean;
-}
+import { ITask } from '../utils/types';
 
 const initialState: ITask[] = [];
 
@@ -16,7 +10,6 @@ const todoSlice = createSlice({
     addTask: (state, action: PayloadAction<ITask>) => {
       state.push({
         ...action.payload,
-        id: state.length + 1,
       })
     },
     deleteTask: (state, action: PayloadAction<number>) => {

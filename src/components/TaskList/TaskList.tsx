@@ -1,12 +1,21 @@
 import { FC } from "react";
 import style from './TaskList.module.css';
+import { ITask } from "../../utils/types";
+import { toggleTaskCompletion } from "../../services/todoSlice";
+import Task from "../Task/Task";
 
-const TaskList: FC = () => {
+interface ITaskList {
+  tasks: ITask[]
+}
+
+const TaskList: FC<ITaskList> = ({ tasks }) => {
 
   return (
-    <div className={style.list}>
-      <p>TaskList</p>
-    </div>
+    <ul className={style.list}>
+      {tasks.map(task => (
+        <Task task={task} />
+      ))}
+    </ul>
   )
 };
 
