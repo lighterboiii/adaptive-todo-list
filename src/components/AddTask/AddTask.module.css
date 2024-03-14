@@ -22,6 +22,8 @@
   padding: 10px;
   width: 60%;
   min-width: 120px;
+  border-radius: 12px;
+  border: .5px black solid;
 }
 
 .form__textarea {
@@ -29,6 +31,8 @@
   width: 60%;
   height: 120px;
   min-width: 120px;
+  border-radius: 12px;
+  border: .5px black solid;
 }
 
 .form__button {
@@ -36,4 +40,10 @@
   background: transparent;
   border: .5px black solid;
   padding: 12px 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .form__set {
+    width: 100%;
+  }
 }

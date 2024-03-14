@@ -31,8 +31,10 @@ const Task: FC<ITaskProps> = ({ task }) => {
           className={style.task__checkbox}
         />
       </label>
-      <h3 className={style.task__name}>{task.name}</h3>
-      <p className={style.task__description}>{task.description}</p>
+      <div className={style.task__content}>
+        <h3 className={style.task__name}>{task.name}</h3>
+        <p className={style.task__description}>{task.description}</p>
+      </div>
       <button
         className={style.task__deleteButton}
         onClick={() => handleDeleteTask(task.id)}

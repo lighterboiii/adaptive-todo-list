@@ -20,8 +20,8 @@ const AddTask: FC = () => {
       case 'description':
         setDescription(value);
         break
-      default: 
-        break;  
+      default:
+        break;
     }
   };
 
@@ -36,32 +36,35 @@ const AddTask: FC = () => {
     dispatch(addTask(task));
     setInputValue('');
     setDescription('');
-  } 
+  }
 
   return (
     <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
       <fieldset className={style.form__set}>
-        <input 
-        type="text" 
-        name="task-name" 
-        value={inputValue} 
-        className={style.form__input} 
-        onChange={(e) => handleChange(e, 'name')} 
-        placeholder="Название"
+        <input
+          type="text"
+          name="task-name"
+          value={inputValue}
+          className={style.form__input}
+          onChange={(e) => handleChange(e, 'name')}
+          placeholder="Название"
         />
-        <textarea 
-        name="description" 
-        id="description" 
-        className={style.form__textarea}
-        value={description} 
-        onChange={(e) => handleChange(e, 'description')} 
-        placeholder="Описание задачи"
+        <textarea
+          name="description"
+          id="description"
+          className={style.form__textarea}
+          value={description}
+          onChange={(e) => handleChange(e, 'description')}
+          placeholder="Описание задачи"
         >
         </textarea>
       </fieldset>
-      <button className={style.form__button}>
+      <button
+        disabled={!inputValue && !description}
+        className={style.form__button}
+      >
         Добавить задачу
-        </button>
+      </button>
     </form>
   )
 };
