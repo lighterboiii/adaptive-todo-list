@@ -6,6 +6,7 @@
   height: 380px;
   box-sizing: border-box;
   position: relative;
+  flex-shrink: 0;
 }
 
 .task__content {
