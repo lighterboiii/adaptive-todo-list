@@ -22,9 +22,12 @@ const todoSlice = createSlice({
       if (task) {
         task.completed = !task.completed;
       }
+    },
+    setTasks: (state, action: PayloadAction<ITask[]>) => {
+      return state.concat(action.payload);
     }
   }
 })
 
-export const { addTask, deleteTask, toggleTaskCompletion } = todoSlice.actions;
+export const { addTask, deleteTask, toggleTaskCompletion, setTasks } = todoSlice.actions;
 export default todoSlice.reducer;
